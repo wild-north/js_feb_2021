@@ -77,6 +77,7 @@ function findIndex(array, elementToFind) {
 };
 
 //-------------------conditions--------------------------------
+
 function createArray(size) {
     return [...new Array(size)].map((v,k) => k);
 } 
@@ -84,6 +85,8 @@ function createArray(size) {
 const arr = createArray(100);
 let array = [1, 2, 3, 8, 4, 5, 6, 7, 8, 9, 10];
 let elementToFind = 8;
+
+//-------------------printing result--------------------------------
 
 document.write(`Original_array:${arr} <br \/>`);
 document.write(`Array with paired numbers:${getPaired(arr)} <br \/>`);
