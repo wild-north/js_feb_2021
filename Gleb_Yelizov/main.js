@@ -33,11 +33,13 @@ function render() {
 
 function getPaired(arr) {
     let paired = [];
+    
     for (let i = 0; i <= arr.length; i++) {
         if ((arr[i] % 2 == 0) && !(arr[i] == 0)) {
-        paired.push(arr[i]);
+            paired.push(arr[i]);
         };
     };
+    
     return paired;
 };
 
@@ -45,34 +47,34 @@ function getPaired(arr) {
 
 function getUnPaired(arr) {
     let unPaired = [];
-    for (let j = (arr.length - 1); j >= 0; j--) {
-        if (arr[j] !== 0) {
-            if (arr[j] % 2 !== 0) {
-                unPaired.push(arr[j]);
-            }
-        else continue;
-        };
+    
+    for (let j = arr.length - 1; j >= 0; j--) {
+        if ((arr[j] !== 0) && (arr[j] % 2 !== 0)) {
+            unPaired.push(arr[j]);
+        }
     };
+    
     return unPaired;
 };
 
 //----------------get indexes of found numbers-----------------
 
-function findIndex(array, elementToFind) {
+function findIndex(arr, elementToFind) {
     let feetNumbers = [];
-    for (let i = 0; i < array.length; i++) {
-            if (array[i] == elementToFind) {
-                feetNumbers.push(i);
+    
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === elementToFind) {
+            feetNumbers.push(i);
+        };            
+        if (i == (arr.length -1)) {
+            if (feetNumbers.length > 0) {
+                break
+            } else {
+                return -1;
             };
-                if (i == (array.length -1)) {
-                    if (feetNumbers.length > 0) {
-                        break
-                    }
-                    else {
-                        feetNumbers.push(-1);
-                    };
-                };
+        };
     };
+    
     return feetNumbers;
 };
 
@@ -80,18 +82,16 @@ function findIndex(array, elementToFind) {
 
 function createArray(size) {
     return [...new Array(size)].map((v,k) => k);
-} 
+}
 
 const arr = createArray(100);
-let array = [1, 2, 3, 8, 4, 5, 6, 7, 8, 9, 10];
-let elementToFind = 8;
 
 //-------------------printing result--------------------------------
 
 document.write(`Original_array:${arr} <br \/>`);
 document.write(`Array with paired numbers:${getPaired(arr)} <br \/>`);
 document.write(`Array with unpaired numbers:${getUnPaired(arr)} <br \/>`);
-document.write(`Indexes of found elements: ${findIndex(array, elementToFind)} <br \/>`);
+document.write(`Indexes of found elements: ${findIndex(arr, 80)} <br \/>`);
 
 
 
