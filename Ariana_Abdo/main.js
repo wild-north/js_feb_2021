@@ -1,37 +1,42 @@
-ЗАДАЧА №1
+//ЗАДАЧА №1
 function createArray(size) {
     return [...new Array(size)].map((v,k) => k);
 }
-
-const arr = createArray(100);
-for (let i = 1; i < arr.length; i++){
+function findOddElements(array) {
+    for (let i = 1; i <= arr.length; i++){
     
-    if ((arr[i] % 2) == 0 ){
-        console.log(arr[i]);
+         if (arr[i] % 2 === 0 ){
+         console.log(arr[i]);
+        }
     }
 }
+const arr = createArray(30);
+let result = findOddElements (arr);
+console.log (result)
 
-ЗАДАЧА №2
+//ЗАДАЧА №2
 function createArray(size) {
     return [...new Array(size)].map((v,k) => k);
 }
-
-const arr = createArray(100);
-for (let i = 99; i < arr.length; i--){
+function findEvenElements(array) {
+    for (let i = arr.length -1; i >= 0; i--){
     
-    if ((arr[i] % 2) === 1 ){
-        console.log(arr[i]);
+         if (arr[i] % 2 === 1 ){
+         console.log(arr[i]);
+        }
     }
 }
+let arr = createArray(30);
+let result = findEvenElements (arr);
+console.log (result)
 
-ЗАДАЧА №3
+//ЗАДАЧА №3
 function findIndex (array, elementToFind) {
 
     for (i = 0; i < array.length; i++) {
 
-        if(array[i] == elementToFind) {
-        return i;
-        break;
+        if(array[i] === elementToFind) {
+            return i;
         }
     }
     return -1
