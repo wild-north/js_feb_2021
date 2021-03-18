@@ -34,28 +34,32 @@ function createArray(size) {
 
 const arr = createArray(100);
 
-function return_even_values (){
-    let result = []
-    for (let i = 0 ; i < arr.length + 1 ; i++) {
-        if (arr[i] % 2 == 0) result.push (arr[i]);}
-    return result
+function returnEvenValues() {
+    let result = [];
+    for (let i = 0; i < arr.length + 1; i++) {
+        if (arr[i] % 2 === 0) result.push(arr[i]);
+    }
+    return result;
 }
     
-function return_odd_values(){
-        let i = arr.length
-        let result = []
-        while (i >= 0){
-            if (arr[i] % 2 !==0){
-                result.push(arr[i]);}
-        i--}
-return result
+function returnOddValues() {
+    let i = arr.length;
+    let result = [];
+    while (i >= 0) {
+        if (arr[i] % 2 !== 0) {
+            result.push(arr[i]);
+        }
+        i--
+    }
+    return result;
 }
 
-function findIndex(){
-    let elementToFind = prompt( "Find Index" );
-    for (let i = 0; i <= arr.length; i++){
-        if (arr[i] == elementToFind){
-        return i}
+function findIndex() {
+    let elementToFind = prompt("Find Index");
+    for (let i = 0; i <= arr.length; i++) {
+        if (arr[i] == elementToFind) {
+            return i;
+        }
     }
-    return -1
+    return -1;
 }
