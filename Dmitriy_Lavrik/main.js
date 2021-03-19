@@ -38,7 +38,7 @@ function fromBeginningToEnd() {
     const evenArray = [];
 
     for (let i = 0; i < arr.length; i++) {
-        if (i % 2 == 0) {
+        if (i % 2 === 0) {
             evenArray.push(i);
         }
     }
@@ -51,7 +51,7 @@ function fromEndToBeginning() {
     const oddArray = [];
 
     for (let i = arr.length - 1; i >= 0; i--) {
-        if (i % 2 == 1) {
+        if (i % 2 === 1) {
             oddArray.push(i);
         }
     }
@@ -78,4 +78,4 @@ function findIndex(array, elementToFind) {
             return -1;
         }
 }
-const findArrayElement = findIndex(array, 52);
+const findArrayElement = findIndex(array, 5);
