@@ -35,7 +35,7 @@ function getPaired(arr) {
     let paired = [];
     
     for (let i = 0; i <= arr.length; i++) {
-        if ((arr[i] % 2 === 0) && (arr[i] !== 0)) {
+        if (arr[i] % 2 === 0 && arr[i] !== 0) {
             paired.push(arr[i]);
         };
     };
@@ -49,7 +49,7 @@ function getUnPaired(arr) {
     let unPaired = [];
     
     for (let j = arr.length - 1; j >= 0; j--) {
-        if ((arr[j] !== 0) && (arr[j] % 2 !== 0)) {
+        if (arr[j] !== 0 && arr[j] % 2 !== 0) {
             unPaired.push(arr[j]);
         }
     };
@@ -66,7 +66,7 @@ function findIndex(arr, elementToFind) {
         if (arr[i] === elementToFind) {
             feetNumbers.push(i);    /*   return -1;  */
         };            
-        if (i == (arr.length -1)) {
+        if (i === arr.length -1) {
             if (feetNumbers.length > 0) {
                 break
             } else {
