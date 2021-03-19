@@ -35,7 +35,7 @@ function getPaired(arr) {
     let paired = [];
     
     for (let i = 0; i <= arr.length; i++) {
-        if ((arr[i] % 2 == 0) && !(arr[i] == 0)) {
+        if ((arr[i] % 2 === 0) && (arr[i] !== 0)) {
             paired.push(arr[i]);
         };
     };
@@ -64,7 +64,7 @@ function findIndex(arr, elementToFind) {
     
     for (let i = 0; i < arr.length; i++) {
         if (arr[i] === elementToFind) {
-            feetNumbers.push(i);
+            feetNumbers.push(i);    /*   return -1;  */
         };            
         if (i == (arr.length -1)) {
             if (feetNumbers.length > 0) {
@@ -91,7 +91,7 @@ const arr = createArray(100);
 document.write(`Original_array:${arr} <br \/>`);
 document.write(`Array with paired numbers:${getPaired(arr)} <br \/>`);
 document.write(`Array with unpaired numbers:${getUnPaired(arr)} <br \/>`);
-document.write(`Indexes of found elements: ${findIndex(arr, 80)} <br \/>`);
+document.write(`Indexes of found elements: ${findIndex(arr, 8)} <br \/>`);
 
 
 
