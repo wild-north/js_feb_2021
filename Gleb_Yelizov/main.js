@@ -64,7 +64,7 @@ function findIndex(arr, elementToFind) {
     
     for (let i = 0; i < arr.length; i++) {
         if (arr[i] === elementToFind) {
-            feetNumbers.push(i);    /*   return -1;  */
+            feetNumbers.push(i);    /*   return i;  */
         };            
         if (i === arr.length -1) {
             if (feetNumbers.length > 0) {
