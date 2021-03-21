@@ -6,44 +6,36 @@ const arr = createArray(100);
  
 function returnEven() {
     let total = [];
-    for (i = 0; i < arr.length; i++) {
-        if (arr[i] % 2 === 0) {
-            continue;   
-         } 
-        total.push (arr[i]);
-
+    for (let i = 0; i < arr.length+1; i++) {
+        if (arr[i] % 2 === 0 && i !== 0) {
+            total.push(arr[i]);
+        }
     }
-    return total
-}
 
+    return total;
+};
 
 
 
 function returnOdd() {
     let total = [];
-    for (i = arr.length - 1; i >= 0; i--) {
-        if (arr[i] % 2 !== 0) {
-            continue;
+    for (let i = arr.length-1; i >= 0; i--) {
+        if (arr[i] % 2 === 0 && i !== 0) {
+            total.push(arr[i]);
         }
-        total.push (arr[i]);
-
     }
-    return total
-}
+
+    return total;
+};
 
 
-function findIndex(array,elementToFind) {
-    let lookIndex = [];
-    for (i = arr.length - 1; i >= 0; i--) {
+function findIndex(arr, elementToFind) {
+    for (let i = 0; i < arr.length; i++) {
         if (arr[i] === elementToFind) {
-            lookIndex.push(i);
-        } else (arr[i] !== elementToFind) {
-            return -1
+            return i;
         }
     }
 
-}
+    return -1;
+};
   
-    
-
-
