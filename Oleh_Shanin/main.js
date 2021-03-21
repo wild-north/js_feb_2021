@@ -1,29 +1,9 @@
-document.addEventListener('DOMContentLoaded', render);
-
-const text = {
-    header: 'This is the file for your home tasks',
-    list: [
-        'Please, write your JavaScript code in <strong>main.js</strong>',
-        'Please, write your CSS code in <strong>styles.css</strong>',
-        'Please, write your HTML right here in <strong>index.html</strong>'
-    ]
-};
-
-function render() {
-    const main = document.createElement('main');
-    const h2 = document.createElement('h2');
-    h2.textContent = text.header;
-
-    const ul = text.list.reduce((ul, text) => {
-        const li = document.createElement('li');
-
-        li.innerHTML = text;
-        ul.append(li);
-
-        return ul;
-    }, document.createElement('ul'));
-
-    main.append(h2);
-    main.append(ul);
-    document.body.append(main);
+function reverseArr(arr){
+    let out = [];
+    for (let i = arr.length-1;i>=0;i--){
+        out.push(arr[i]);
+    }
+    return out;
 }
+
+ let arr = [2,4,5,7,33,66,89,12];
