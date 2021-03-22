@@ -1,8 +1,6 @@
-<<<<<<< HEAD
-=======
 Abdo Ariana
 Shanin Oleg
 Yelizov Gleb
 Kostin Valentyne
 Valeri Reshetniak 
->>>>>>> cc7268f7c532ced8506c1c1d9d925ea722491f7c
+Vladyslav Klymovych
