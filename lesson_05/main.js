@@ -14,7 +14,7 @@ function  myRevers(arr) {
     return [... newArr]
 }
 
-primeArr=myReverse(primeArr)
+primeArr=myRevers(primeArr)
 
 console.log(primeArr);
 
