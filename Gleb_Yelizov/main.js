@@ -5,8 +5,7 @@ function createMatrix(size) {
     let arr = [];
     
     for (let i = 0; i < size; i++) {        
-        arr.push([]);
-        
+        arr.push([]);        
         for (let j = 0; j < size; j++) {        
             arr[i].push(+`${i}${j}`);    
         };
@@ -58,7 +57,6 @@ function toClockwise(matrix) {
         };
     };
 
-
     return tempMatrix;
 };
 
@@ -84,7 +82,6 @@ function toAntiClockwise(matrix) {
             };            
         };
     };
-
 
     return tempMatrix;
 };
@@ -165,6 +162,7 @@ function toWormArray(matrix) {
             };
         };
         tempMatrix.pop();
+
         for (let i = matrix.length - 1 - z; i >= 0 + z; i--) {
             for (j = matrix[i].length - 1 - z; j >= 0 + z; j--) {
                 if (i === matrix.length - 1 - z || j === 0 + z) {
