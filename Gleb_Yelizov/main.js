@@ -1,54 +1,193 @@
-//------------------------------------Homework after lesson_05---------------------------------------------
+//------------------------------------Homework after lesson_06---------------------------------------------
 
-//----------conditions--------------
-
-function createArray(size) {
-    const arr = [];
-
-    for (let i = 0; i < size; i++) {
-        arr[i] = i + 1;
+//---------------------create 2d array---------------------
+function createMatrix(size) {
+    let arr = [];
+    
+    for (let i = 0; i < size; i++) {        
+        arr.push([]);
+        
+        for (let j = 0; j < size; j++) {        
+            arr[i].push(+`${i}${j}`);    
+        };
     };
-
+    
     return arr;
 };
 
-const arr = createArray(20);
+let initialMatrix = createMatrix(6);
 
-//----------solution-----------------
+console.table(initialMatrix);
 
-function reverseArray(array) {
-    let temp = array.length;
+let twoDmatrix = initialMatrix.slice();
+
+//----------------transform 2d array to 1d--------------------
+
+function transformToOneD(matrix) {
+    let tempMatrix = [];
     
-    for (let i = 1, j = 1; j <= temp - 1; i += 2, j++) {
-        array.unshift(array[i]);
+    for (let i = 0; i < matrix.length; i++) {
+        for (j = 0; j < matrix[i].length; j++) {
+            tempMatrix.push(matrix[i][j]);
+        };
     };
-    
-    array.length = temp;
+
+    return tempMatrix;
 };
 
-//----------result-----------------
+let oneDmatrix = transformToOneD(twoDmatrix)
+console.log(oneDmatrix);
 
-document.write(`Initial array: ${arr}`);
+//------------------array clockwise----------------------------
 
-reverseArray(arr);
+function toClockwise(matrix) {
+    let tempMatrix = [];
+    
+    for (let i = 0; i < matrix.length; i++) {
+        for (j = 0; j < matrix[i].length; j++) {
+            if (i === 0 || j === matrix[i].length - 1) {
+                tempMatrix.push(matrix[i][j]);
+            };            
+        };
+    };
+    for (let i = matrix.length - 1; i > 0; i--) {
+        for (j = matrix[i].length - 2; j >= 0; j--) {
+            if (i === matrix.length - 1 || j === 0) {
+                tempMatrix.push(matrix[i][j]);
+            };            
+        };
+    };
 
-document.write(`<br/>Reversed array: ${arr}`);
+
+    return tempMatrix;
+};
+
+let clockwise = toClockwise(twoDmatrix)
+console.log(clockwise);
+
+//------------------array anti-clockwise----------------------------
+
+function toAntiClockwise(matrix) {
+    let tempMatrix = [];
+    
+    for (let i = 0; i < matrix.length; i++) {
+        for (j = 0; j < matrix[i].length; j++) {
+            if (j === 0 || i === matrix.length - 1) {
+                tempMatrix.push(matrix[i][j]);
+            };            
+        };
+    };
+    for (let i = matrix.length - 2; i >= 0; i--) {
+        for (j = matrix[i].length - 1; j > 0; j--) {
+            if (j === matrix[i].length - 1 || i === 0) {
+                tempMatrix.push(matrix[i][j]);
+            };            
+        };
+    };
 
 
+    return tempMatrix;
+};
 
+let antiClockwise = toAntiClockwise(twoDmatrix)
+console.log(antiClockwise);
 
+//------------------array clockwise triangle----------------------------
 
+function toCWTriangle(matrix) {
+    let tempMatrix = [];
+    
+    for (let i = 0; i < matrix.length; i++) {
+        for (j = 0; j < matrix[i].length; j++) {
+            if (i === 0 || j === matrix[i].length - 1) {
+                tempMatrix.push(matrix[i][j]);
+            };            
+        };
+    };
+    tempMatrix.pop();
 
+    for (let i = matrix.length - 1; i >= 0; i--) {
+        for (j = matrix[i].length - 1; j >= 0; j--) {
+            if (i === j) {
+                tempMatrix.push(matrix[i][j]);
+            };            
+        };
+    };
+    tempMatrix.pop();
 
+    return tempMatrix;
+};
 
+let cwTriangle = toCWTriangle(twoDmatrix)
+console.log(cwTriangle);
 
+//------------------array anti-clockwise triangle----------------------------
 
+function toACWTriangle(matrix) {
+    let tempMatrix = [];
+    
+    for (let i = 0; i < matrix.length; i++) {
+        for (j = 0; j < matrix[i].length; j++) {
+            if (j === 0 || i === matrix.length - 1) {
+                tempMatrix.push(matrix[i][j]);
+            };            
+        };
+    };
+    tempMatrix.pop();
 
+    for (let i = matrix.length - 1; i >= 0; i--) {
+        for (j = matrix[i].length - 1; j >= 0; j--) {
+            if (i === j) {
+                tempMatrix.push(matrix[i][j]);
+            };            
+        };
+    };
+    tempMatrix.pop();
 
+    return tempMatrix;
+};
 
+let aCwTriangle = toACWTriangle(twoDmatrix)
+console.log(aCwTriangle);
 
+//------------------array worm style----------------------------
 
+function toWormArray(matrix) {
+    let tempMatrix = [];
 
+    for (let z = 0; z < matrix.length / 2; z++) {
+        
+        for (let i = 0 + z; i <= matrix.length - 1 - z; i++) {
+            for (j = 0 + z; j <= matrix[i].length - 1 - z; j++) {
+                if (i === 0 + z || j === matrix[i].length - 1 - z) {
+                    tempMatrix.push(matrix[i][j]);
+                };        
+            };
+        };
+        tempMatrix.pop();
+        for (let i = matrix.length - 1 - z; i >= 0 + z; i--) {
+            for (j = matrix[i].length - 1 - z; j >= 0 + z; j--) {
+                if (i === matrix.length - 1 - z || j === 0 + z) {
+                    tempMatrix.push(matrix[i][j]);
+                };
+            };
+        };
+        tempMatrix.pop();
+    };
+
+    if (matrix.length % 2 !== 0) {
+        let temp = (matrix.length - 1) / 2 ;
+        
+        tempMatrix.push(matrix[temp][temp]);
+    };
+        
+    return tempMatrix;
+};
+
+let wormArray = toWormArray(twoDmatrix)
+console.log(wormArray);
+
+//------------------array worm style Solution #2----------------------------
 
 
 
