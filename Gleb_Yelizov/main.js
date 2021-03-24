@@ -15,7 +15,7 @@ function createMatrix(size) {
     return arr;
 };
 
-let initialMatrix = createMatrix(6);
+let initialMatrix = createMatrix(6); /*works the same as array 10x10, but much easier to check results*/
 
 console.table(initialMatrix);
 
@@ -175,7 +175,7 @@ function toWormArray(matrix) {
         tempMatrix.pop();
     };
 
-    if (matrix.length % 2 !== 0) {
+    if (matrix.length % 2 !== 0) {      /* I have made this block to predict arrays with not odd numbers of edges like 5x5 or 11x11 */
         let temp = (matrix.length - 1) / 2 ;
         
         tempMatrix.push(matrix[temp][temp]);
