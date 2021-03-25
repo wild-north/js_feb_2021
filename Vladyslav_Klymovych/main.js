@@ -27,3 +27,11 @@ function render() {
     main.append(ul);
     document.body.append(main);
 }
+
+function reverseArray(array) {
+    let arrLen = array.length;
+    for (let i = arrLen, j =-1; j++,i--;) {
+        array.unshift( array[arrLen-1-i+(j)] );
+    }    
+    array.length = arrLen;
+  }
