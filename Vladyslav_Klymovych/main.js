@@ -28,10 +28,52 @@ function render() {
     document.body.append(main);
 }
 
-function reverseArray(array) {
-    let arrLen = array.length;
-    for (let i = arrLen, j =-1; j++,i--;) {
-        array.unshift( array[arrLen-1-i+(j)] );
-    }    
-    array.length = arrLen;
-  }
+///function reverseArray(array) {
+///    let arrLen = array.length;
+///    for (let i = arrLen, j =-1; j++,i--;) {
+///        array.unshift( array[arrLen-1-i+(j)] );
+///    }    
+///    array.length = arrLen;
+///  } 
+
+
+    let c = 0;
+
+    function createMatrix(size) {
+        const resultArray = [];
+        for (let i = 0; i < size; i++) {
+            resultArray[i] = [];
+            for (let j = 0; j < size; j++) {
+                resultArray[i][j] = c++;
+            }
+        }
+        return resultArray;
+    }
+
+    const myArray = createMatrix(10);
+
+
+    function arrayPerimeter(array) {
+        let resultArray = [];
+        let sizeLen = array.length;
+        let arrLen = Math.ceil((sizeLen) / 2 );
+        for (let i = 0; i < 1; i++){
+            for (let j = 0; j < sizeLen; j++) {
+                resultArray.push (array[i][i + j]);
+                
+            }
+            for (let j = 1; j < sizeLen; j++) {
+                resultArray.push (array[i + j][sizeLen - 1 - i]);
+
+            }
+            for (let j = sizeLen - 2; j > -1; j--) {
+                resultArray.push(array[sizeLen - 1 - i][i + j]);
+
+            }
+            for (let j = sizeLen - 2; j > 0; j --) {
+                resultArray.push(array[i + j][i]);
+            }
+
+        }
+        return resultArray;
+    }
