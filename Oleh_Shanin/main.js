@@ -1,29 +1,41 @@
-document.addEventListener('DOMContentLoaded', render);
+function createArray(size) {
+    return [...new Array(size)].map((v,k) => k);
+}
 
-const text = {
-    header: 'This is the file for your home tasks',
-    list: [
-        'Please, write your JavaScript code in <strong>main.js</strong>',
-        'Please, write your CSS code in <strong>styles.css</strong>',
-        'Please, write your HTML right here in <strong>index.html</strong>'
-    ]
+const arr = createArray(100);
+ 
+function returnEven() {
+    let total = [];
+    for (let i = 0; i < arr.length+1; i++) {
+        if (arr[i] % 2 === 0 && i !== 0) {
+            total.push(arr[i]);
+        }
+    }
+
+    return total;
 };
 
-function render() {
-    const main = document.createElement('main');
-    const h2 = document.createElement('h2');
-    h2.textContent = text.header;
 
-    const ul = text.list.reduce((ul, text) => {
-        const li = document.createElement('li');
 
-        li.innerHTML = text;
-        ul.append(li);
+function returnOdd() {
+    let total = [];
+    for (let i = arr.length-1; i >= 0; i--) {
+        if (arr[i] % 2 === 0 && i !== 0) {
+            total.push(arr[i]);
+        }
+    }
 
-        return ul;
-    }, document.createElement('ul'));
+    return total;
+};
 
-    main.append(h2);
-    main.append(ul);
-    document.body.append(main);
-}
+
+function findIndex(arr, elementToFind) {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === elementToFind) {
+            return i;
+        }
+    }
+
+    return -1;
+};
+  
