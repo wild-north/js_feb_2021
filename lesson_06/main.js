@@ -89,7 +89,6 @@ function reverseMatrix(matrix) {
     const result = [];
 
     for (let i = matrix.length - 1; i >= 0; i--) {
-        // matrix[i]
         for (let j = matrix[i].length - 1; j >= 0; j--) {
             result.push(matrix[i][j]);
         }
