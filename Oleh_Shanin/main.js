@@ -1,47 +1,3 @@
-function createArray(size) {
-    return [...new Array(size)].map((v,k) => k);
-}
-
-const arr = createArray(100);
- 
-function returnEven() {
-    let total = [];
-    for (let i = 0; i < arr.length+1; i++) {
-        if (arr[i] % 2 === 0 && i !== 0) {
-            total.push(arr[i]);
-        }
-    }
-
-    return total;
-};
-
-
-
-function returnOdd() {
-    let total = [];
-    for (let i = arr.length-1; i >= 0; i--) {
-        if (arr[i] % 2 === 0 && i !== 0) {
-            total.push(arr[i]);
-        }
-    }
-
-    return total;
-};
-
-
-function findIndex(arr, elementToFind) {
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] === elementToFind) {
-            return i;
-        }
-    }
-
-    return -1;
-};
-  
-
-
-
 let c = 0;
 
 function createMatrix(size) {
@@ -64,29 +20,18 @@ const myArray = createMatrix(10);
 console.table(myArray);
 
 
+function getReversepPrimeter(matrix) {
+    const topArray = matrix[0].slice().reverse();
+    const bottomArray = matrix[matrix.length - 1].slice();
+    const leftArray = [];
+    const rightArray = [];
 
-const w = 10;
-const h = 10;
+    for (let i = 1; i < matrix.length - 1; i++) {
+        leftArray.push(matrix[i] [0]);
+        rightArray.push(matrix[i] [matrix[i].length - 1]);
+    }
 
-function removalFromTheMattress(w, h){
-    const result = [];
-    let startCol = 0;
-    let endCol = w - 1;
-    let startRow = 0;
-    let endRow = h - 1;
-        for (let i = startCol; i <= endCol; i++) {
-            result.push[i];
-        }
-        for (let j = startRow; j <= endRow; j++) {
-            result.push[j];
-        }
-        for (let k = endCol; k >= startCol; k--) {
-            result.push[k];
-        }
-        for (let o = endrow; o >= startRow; o--) {
-            result.push[o]
-        }
+    rightArray.reverse();
 
-
-    return result;
-};
+    return bottomArray.concat(rightArray, topArray, leftArray);
+}
