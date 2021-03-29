@@ -1,29 +1,59 @@
-document.addEventListener('DOMContentLoaded', render);
+//------------------------------------Homework after lesson_05---------------------------------------------
 
-const text = {
-    header: 'This is the file for your home tasks',
-    list: [
-        'Please, write your JavaScript code in <strong>main.js</strong>',
-        'Please, write your CSS code in <strong>styles.css</strong>',
-        'Please, write your HTML right here in <strong>index.html</strong>'
-    ]
+//----------conditions--------------
+
+function createArray(size) {
+    const arr = [];
+
+    for (let i = 0; i < size; i++) {
+        arr[i] = i + 1;
+    };
+
+    return arr;
 };
 
-function render() {
-    const main = document.createElement('main');
-    const h2 = document.createElement('h2');
-    h2.textContent = text.header;
+const arr = createArray(20);
 
-    const ul = text.list.reduce((ul, text) => {
-        const li = document.createElement('li');
+//----------solution-----------------
 
-        li.innerHTML = text;
-        ul.append(li);
+function reverseArray(array) {
+    let temp = array.length;
+    
+    for (let i = 1, j = 1; j <= temp - 1; i += 2, j++) {
+        array.unshift(array[i]);
+    };
+    
+    array.length = temp;
+};
 
-        return ul;
-    }, document.createElement('ul'));
+//----------result-----------------
 
-    main.append(h2);
-    main.append(ul);
-    document.body.append(main);
-}
+document.write(`Initial array: ${arr}`);
+
+reverseArray(arr);
+
+document.write(`<br/>Reversed array: ${arr}`);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
