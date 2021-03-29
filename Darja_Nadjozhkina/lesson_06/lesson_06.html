@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+function createArray(size) {
+    const arr = [];
+
+    for (let i = 0; i < size; i++) {
+        arr[i] = i + 1;
+    }
+
+    for (let j = 0; j < size; j++) {
+        arr[j] = j + 1;
+    }
+
+    return arr;
+}
+
+
+let c = 0;
+
+function createMatrix(size) {
+    const resultArray = [];
+
+    for (let i = 0; i < size; i++) {
+        resultArray[i] = [];
+        for (let j = 0; j < size; j++) {
+            resultArray[i].push(`${i}:${j}`);
+
+            resultArray[i][j] = c++;
+        }
+    }
+
+    return resultArray;
+}
+
+const myArray = createMatrix(10);
+
+console.table(myArray);
+
+function perimeterMatrix(matrix) {
+    const result = [];
+    for (let i = 0; i <= 0; i++) {
+        for (let j = 0; j <= matrix.length - 1; j++) {
+            result.push(matrix[i][j]);
+        }
+    }
+         for (let i = 1; i <= matrix.length -2; i++) {
+            for (let j = matrix.length - 1; j <= matrix.length -1 ; j++) {
+            result.push(matrix[i][j]);
+        }    
+    }
+        for (let i = matrix.length - 1; i >= matrix.length -1; i--) {
+            for (let j = matrix.length - 1; j >= 1; j--) {
+            result.push(matrix[i][j]);
+            }
+        }
+        for (let i = matrix.length - 1; i >= 1; i--) {
+            for (let j = 0; j >=0 ; j--) {
+            result.push(matrix[i][j]);
+        }    
+      
+    }
+
+    return result;
+}
+
+console.log('perimeterMatrix', perimeterMatrix(myArray));
+
+   </script>
+</body>
+</html>
+
+
+
+
