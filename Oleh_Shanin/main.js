@@ -1,29 +1,37 @@
-document.addEventListener('DOMContentLoaded', render);
+let c = 0;
 
-const text = {
-    header: 'This is the file for your home tasks',
-    list: [
-        'Please, write your JavaScript code in <strong>main.js</strong>',
-        'Please, write your CSS code in <strong>styles.css</strong>',
-        'Please, write your HTML right here in <strong>index.html</strong>'
-    ]
-};
+function createMatrix(size) {
+    const resultArray = [];
 
-function render() {
-    const main = document.createElement('main');
-    const h2 = document.createElement('h2');
-    h2.textContent = text.header;
+    for (let i = 0; i < size; i++) {
+        resultArray[i] = [];
+        for (let j = 0; j < size; j++) {
+            // resultArray[i].push(`${i}:${j}`);
+            resultArray[i][j] = c++;
+        }
+    }
 
-    const ul = text.list.reduce((ul, text) => {
-        const li = document.createElement('li');
+    return resultArray;
+}
 
-        li.innerHTML = text;
-        ul.append(li);
+const myArray = createMatrix(10);
+// const myArray2 = createMatrix(100);
 
-        return ul;
-    }, document.createElement('ul'));
+console.table(myArray);
 
-    main.append(h2);
-    main.append(ul);
-    document.body.append(main);
+
+function getReversepPrimeter(matrix) {
+    const topArray = matrix[0].slice().reverse();
+    const bottomArray = matrix[matrix.length - 1].slice();
+    const leftArray = [];
+    const rightArray = [];
+
+    for (let i = 1; i < matrix.length - 1; i++) {
+        leftArray.push(matrix[i] [0]);
+        rightArray.push(matrix[i] [matrix[i].length - 1]);
+    }
+
+    rightArray.reverse();
+
+    return bottomArray.concat(rightArray, topArray, leftArray);
 }
