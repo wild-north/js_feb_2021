@@ -193,17 +193,50 @@ const army = [];
 let counter = 0;
 
 while(counter < 10) {
-    counter++;
+    function inner() {
+        const index = counter;
+        counter++;
 
-    function solder() {
-        console.log(counter);
+        function solder() {
+            console.log(index);
+        }
+        
+        army.push(solder);
     }
-    
-    army.push(solder);
+    inner();
 }
+
+/////////////////////////////////////
+while(counter < 10) {
+    function inner(index) {
+        counter++;
+
+        function solder() {
+            console.log(index);
+        }
+        
+        army.push(solder);
+    }
+    inner(counter);
+}
+
 
 army[0]();
 army[5]();
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
 // ДЗ - сделать так, чтобы вызовы функций возвращали "правильный" counter.
 
 // const a = 10;
