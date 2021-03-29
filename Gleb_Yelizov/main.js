@@ -20,22 +20,22 @@ army[5]();
 
 //---------------------Second solution---------------------
 
-let army = [];
+let army2 = [];
 
 for (let counter = 0; counter < 10; counter++) {
     function solder() {
         console.log(counter);
     };
 
-    army.push(solder); 
+    army2.push(solder); 
 };
     
-army[7]();
-army[9]();
+army2[7]();
+army2[9]();
 
 //---------------------Just to try add empty function---------------------
 
-let army = [];
+let army3 = [];
 
 (function x() {
     for (let counter = 0; counter < 10; counter++) {
@@ -43,9 +43,9 @@ let army = [];
             console.log(counter);
         };
 
-        army.push(solder); 
+        army3.push(solder); 
     };
 })();
 
-army[7]();
-army[9]();
+army3[8]();
+army3[4]();
