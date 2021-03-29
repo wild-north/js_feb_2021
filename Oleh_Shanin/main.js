@@ -1,29 +1,23 @@
-document.addEventListener('DOMContentLoaded', render);
+const army = [];
 
-const text = {
-    header: 'This is the file for your home tasks',
-    list: [
-        'Please, write your JavaScript code in <strong>main.js</strong>',
-        'Please, write your CSS code in <strong>styles.css</strong>',
-        'Please, write your HTML right here in <strong>index.html</strong>'
-    ]
-};
+let counter = 0;
 
-function render() {
-    const main = document.createElement('main');
-    const h2 = document.createElement('h2');
-    h2.textContent = text.header;
+for (let counter = 0; counter < 10; counter++) {
 
-    const ul = text.list.reduce((ul, text) => {
-        const li = document.createElement('li');
-
-        li.innerHTML = text;
-        ul.append(li);
-
-        return ul;
-    }, document.createElement('ul'));
-
-    main.append(h2);
-    main.append(ul);
-    document.body.append(main);
+    function solder() {
+        console.log(counter);
+    }
+    
+    army.push(solder);
 }
+
+army[0]();
+army[1]();
+army[2]();
+army[3]();
+army[4]();
+army[5]();
+army[6]();
+army[7]();
+army[8]();
+army[9]();
