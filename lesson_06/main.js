@@ -1,57 +1,4 @@
-// написать фукнцию, принимающую на вход массив 
-// и ничего не возвращающую. 
-// при вызове, функция должна изменять массив таким образом, 
-// чтобы элементы в нем выстраивались в зеркальном порядке (другими словами, 
-// функция должна работать аналогично методу reverse)
 
-function createArray(size) {
-    const arr = [];
-
-    for (let i = 0; i < size; i++) {
-        arr[i] = i + 1;
-    }
-
-    return arr;
-}
-
-function reverseArray(arr) {
-    for (let i = 0; i < arr.length / 2; i++) {
-        const left = arr[i];
-        const right = arr[arr.length - 1 - i];
-     
-        arr[i] = right;
-        arr[arr.length - 1 - i] = left;
-    }
-}
-
-const arr = createArray(10);
-
-reverseArray(arr);
-
-console.log(arr);
-////////////////////////////////////////////////////
-// const arr1 = [1,2,3];
-// const arr2 = [4,5,6];
-// const arr3 = [7,8,9];
-
-// const array = [[1,2,3], [4,5,6], [7,8,9]];
-
-// console.log(array[0][0])
-
-// const array = arr.map(function(id) {
-//     return {
-//         id,
-//         passed: true
-//     }
-// });
-
-// if (array.every(value => value.passed)) {
-//     alert()
-// }
-
-// array.some(function(value, index) {
-//     return !value.passed;
-// });
 let c = 0;
 
 function createMatrix(size) {
@@ -59,9 +6,8 @@ function createMatrix(size) {
 
     for (let i = 0; i < size; i++) {
         resultArray[i] = [];
-        for (let j = 0; j < size; j++) {
-            // resultArray[i].push(`${i}:${j}`);
-            resultArray[i][j] = c++;
+        for (let j = 0; j < size; j++) {            
+            resultArray[i] [j] = c++;
         }
     }
 
@@ -69,34 +15,62 @@ function createMatrix(size) {
 }
 
 const myArray = createMatrix(10);
-// const myArray2 = createMatrix(100);
+
+// console.table(myArray);
+
+function getPerimeter(matrix) {
+    const topArray = matrix[0].slice();
+    const bottomArray = matrix[matrix.length - 1].slice().reverse();
+    const leftArray = [];
+    const rightArray = [];
+
+    for (let i = 1; i < matrix.length - 1; i++) {
+        rightArray.push(matrix[i][matrix[i].length - 1]);
+        leftArray.push(matrix[i][0]);
+    }
+
+    leftArray.reverse();
+
+    return topArray.concat(rightArray, bottomArray, leftArray);
+}
+
+console.log(getPerimeter(myArray));
+
+/////////////////////////////////////////////////////////////
+
+let a = 0;
+
+function createArray(matrix) {
+    const array = [];
+
+        for (let i = 0; i < matrix; i++) {
+            array [i] = [];
+            for (let j = 0; j < matrix; j++) {
+                array [i] [j] = a++;
+            }
+        }
+
+    return array;
+}
+
+const myArray = createArray(10);
 
 console.table(myArray);
 
-/*
-Написать функцию, принимающую на вход двумерный массив
-и возвращающую одномерный массив, состоящи из эл-тов
-двумерного массива. Направлаение - из конца в начало.
-*/
+function newPerimeter (size) {
+    const topArray = size[0].slice().reverse();
+    const bottomArray = size[size.length - 1].slice();
+    const leftArray = [];
+    const rightArray = [];
 
-// const array = [
-//     [1,2,3],
-//     [4,5,6],
-//     [7,8,9]
-// ];
-
-function reverseMatrix(matrix) {
-    const result = [];
-
-    for (let i = matrix.length - 1; i >= 0; i--) {
-        // matrix[i]
-        for (let j = matrix[i].length - 1; j >= 0; j--) {
-            result.push(matrix[i][j]);
-        }
+    for (i = 1; i < size.length - 1; i++) {
+        leftArray.push(size [i] [0]);
+        rightArray.push(size [i] [size[i].length - 1])
     }
+    
+    rightArray.reverse();
 
-    return result;
+    return leftArray.concat(bottomArray, rightArray, topArray);
 }
 
-console.log('reverseMatrix', reverseMatrix(myArray));
-
+console.log(newPerimeter(myArray));
