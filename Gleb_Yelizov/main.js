@@ -36,16 +36,16 @@ army2[9]();
 //---------------------Just to try add empty function---------------------
 
 let army3 = [];
-
-(function x() {
-    for (let counter = 0; counter < 10; counter++) {
+let counter1 = 0;
+(function x(y) {
+    for (y = 0; y < 10; y++) {
         function solder() {
-            console.log(counter);
+            console.log(y);
         };
 
         army3.push(solder); 
     };
-})();
+})(counter1);
 
 army3[8]();
 army3[4]();
