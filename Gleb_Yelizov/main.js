@@ -187,7 +187,25 @@ console.log(wormArray);
 
 //------------------array worm style Solution #2----------------------------
 
+function toWormArray2(matrix) {
+    let tempMatrix = [];
 
+    
+        let topArray = matrix[0].slice();
+        let bottomArray = matrix[matrix.length - 1].slice();
+        let rightArray = [];
+        let leftArray = [];
+
+        for (let i = 1; i < matrix.length - 1; i++) {
+            rightArray.push(matrix[i][matrix[i].length - 1]);
+            leftArray.push(matrix[i][0]);
+        };
+        
+       return tempMatrix.concat(topArray, rightArray, bottomArray.reverse(), leftArray.reverse())    
+};
+
+let wormArray2 = toWormArray2(twoDmatrix)
+console.log(wormArray2);
 
 
 
