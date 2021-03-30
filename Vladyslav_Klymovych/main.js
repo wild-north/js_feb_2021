@@ -27,3 +27,36 @@ function render() {
     main.append(ul);
     document.body.append(main);
 }
+
+///////////////////////////////////////////////////
+//const army = [];
+
+//let counter = 0;
+
+//for (let counter = 0 ; counter < 10; counter++) {
+
+//    function solder() {
+//        console.log(counter);
+//    }
+    
+//    army.push(solder);
+//}
+
+//army[0]();
+//army[5]();
+
+/////////////////////////////////////////////////////////////
+
+const army = [];
+
+let counter = 0;
+
+while(counter < 10) {
+    
+    let solder = ((i) => (function() {console.log(i)}))(counter);
+    army.push(solder);
+    counter++;
+}
+
+army[0]();
+army[5]();
