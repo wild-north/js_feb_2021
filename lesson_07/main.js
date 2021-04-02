@@ -239,8 +239,8 @@ army[5]();
 
 // ДЗ - сделать так, чтобы вызовы функций возвращали "правильный" counter.
 
-// const a = 10;
+ const a = 10;
 
-// (function(a) {
-//     console.log(a);
-// })(100);
+ (function(a) {
+     console.log(a);
+ })(100);
