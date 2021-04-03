@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tree</title>
+</head>
+<body>
+<pre>
+		Wired system.
+
+		Your task in this assignment is to determine whether the bulb element of 
+        a wired system will be on or off.
+
+		Simple visualisation example of wiring system
+
+		0-------------|
+		              A---false----|
+		1-------------|            |
+		                           X---false----@
+		1-------------|            |
+		              N---false----|
+		There are 3 types of elements in the system:
+
+		switches (0(off), 1(on))
+		gates (A(and), O(or), N(not), X(xor))
+		light bulb (@)
+		switches can have one of these states: 0, 1
+
+		gates are logical operators, they transform signals with their 
+        internal logic:
+
+		+--------------------------+
+		|  and gate                |
+		+--------+--------+--------+
+		| Input1 | Input2 | Output |
+		| 1      | 1      | 1      |
+		| 1      | 0      | 0      |
+		| 0      | 1      | 0      |
+		| 0      | 0      | 0      |
+		+--------+--------+--------+
+		+--------------------------+
+		|  or gate                 |
+		+--------+--------+--------+
+		| Input1 | Input2 | Output |
+		| 1      | 1      | 1      |
+		| 1      | 0      | 1      |
+		| 0      | 1      | 1      |
+		| 0      | 0      | 0      |
+		+--------+--------+--------+
+		+--------------------------+
+		|  xor gate                |
+		+--------+--------+--------+
+		| Input1 | Input2 | Output |
+		| 1      | 1      | 0      |
+		| 1      | 0      | 1      |
+		| 0      | 1      | 1      |
+		| 0      | 0      | 0      |
+		+--------+--------+--------+
+		+-------------------+
+		| not gate          |
+		+----------+--------+
+		| Input    | Output |
+		| 1        | 0      |
+		| 0        | 1      |
+		+----------+--------+
+		Your assignment is to write a program which will output 0 or 1 depending on which signal will be on bulb element in the wired system.
+
+		Some additional details.
+
+		Lets think how to represent the wired system by a data structure. Create a wired system with at least 10 levels of elements. switch elements should be present on at least 2 different levels.
+
+
+</pre>
+</body>
+</html>
+
+<script>
+    const scheme1 = {
+        name: 'gate',
+        type: 'xor',
+        children: [
+        {
+            name: 'gate',
+            type: 'and',
+            children: [
+            {
+                name: 'switch',
+                state: true
+            },
+            {
+                name: 'switch',
+                state: false
+            }
+            ]
+        }, {
+            name: 'gate',
+            type: 'not',
+            children: [{
+                name: 'switch',
+                state: true
+            }]
+        }]
+    };
+
+    const scheme2 = {
+        name: 'gate',
+        type: 'and',
+        children: [
+        {
+            name: 'gate',
+            type: 'or',
+            children: [
+            {
+                name: 'switch',
+                state: true
+            },
+            {
+                name: 'gate',
+                type: 'xor',
+                children: [
+                {
+                    name: 'switch',
+                    state: false
+                },
+                {
+                    name: 'gate',
+                    type: 'not',
+                    children: [
+                    {
+                        name: 'switch',
+                        state: true
+                    }
+                    ]
+                }
+                ]
+            }
+            ]
+        }, {
+            name: 'gate',
+            type: 'not',
+            children: [
+            {
+                name: 'switch',
+                state: true
+            }
+            ]
+        }
+        ]
+    };
+
+    const scheme3 = {
+        name: 'gate',
+        type: 'xor',
+
+        children: [
+        {
+            name: 'gate',
+            type: 'not',
+            children: [
+            {
+                name: 'switch',
+                state: false
+            }
+            ]
+        }, {
+            name: 'gate',
+            type: 'or',
+            children: [
+            {
+                name: 'gate',
+                type: 'or',
+                children: [
+                {
+                    name: 'switch',
+                    state: false
+                },
+                {
+                    name: 'gate',
+                    type: 'and',
+                    children: [{
+                        name: 'switch',
+                        state: false
+                    },{
+                        name: 'switch',
+                        state: true
+                    }]
+                }
+                ]
+            },
+            {
+                name: 'switch',
+                state: false
+            }
+            ]
+        }
+        ]
+    };
+////////////// solution 1 ///////////////////////
+    function or(a,b) {
+        return a || b;
+    }
+    function and(a,b) {
+        return a && b;
+    }
+    function xor(a,b) {
+        return !!(a ^ b);
+    }
+    function not(a) {
+        return !a;
+    }
+
+    function electricPetrovich(object) {
+        // условие для выхода из рекурсии
+        if (object.name === 'switch') {
+            return object.state;
+        }
+        //  [ true, true ]
+        const results = object.children.map(function(item) {
+            // рекурсивно считаем значения для чилдренов 
+            // (если помните, для AND, OR, XOR - в массиве children - два элемента,
+            // для NOT - в массиве чилдрен один элемент)
+            return electricPetrovich(item);
+        });
+        
+        return getLogic(object.type, results);
+    }
+    
+    function getLogic(type, children) {
+        switch(type) {
+            case 'and':
+                return and(children[0], children[1]);
+            case 'or':
+                return or(children[0], children[1]);
+            case 'xor':
+                return xor(children[0], children[1]);
+            default:
+                return not(children[0]);
+        }
+    }
+
+    console.log(electricPetrovich(scheme3));
+    /////////////// solution 2 ////////////////////////////////
+
+    // объект, содержащий в себе пары ключ (название логической операции) 
+    // и значение (функция, реализующая эту логическую операцию)
+    // используется вместо функции getLogic
+    const logic = {
+        'and': function (array) {
+            return array[0] && array[1]
+        },
+        'xor': function (array) {
+            return !!(array[0] ^ array[1])
+        },
+        'or': (array) => array[0] || array[1],
+        'not': (array) => !array[0]
+    };
+
+    function schemeRecursive(object) {
+        if (object.name === 'switch') {
+            return object.state;
+        }
+        
+        const results = object.children.map((item) => schemeRecursive(item));
+        
+        // выбираем из объекта logic по соответствующему типу object.type нужную функцию
+        // и вызываем ее, передавая в качестве аргумента массив результатов для чилдренов,
+        // полученный выше с использованием рекурсии. 
+        // Результат этой логической функции будет возвращен либо в функцию выше по стэку вызовов (в случае рекурсии),
+        // либо сразу в качестве результата работы.
+        return logic[object.type](results);
+    }
+
+    console.log(schemeRecursive(scheme2));
+</script>
