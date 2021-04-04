@@ -1,29 +1,36 @@
-document.addEventListener('DOMContentLoaded', render);
+/////////////////////
 
-const text = {
-    header: 'This is the file for your home tasks',
-    list: [
-        'Please, write your JavaScript code in <strong>main.js</strong>',
-        'Please, write your CSS code in <strong>styles.css</strong>',
-        'Please, write your HTML right here in <strong>index.html</strong>'
-    ]
-};
+/// Home work. exercise №1
 
-function render() {
-    const main = document.createElement('main');
-    const h2 = document.createElement('h2');
-    h2.textContent = text.header;
 
-    const ul = text.list.reduce((ul, text) => {
-        const li = document.createElement('li');
+//const book = {
+//    'Животные': {
+//        'Олени': {},
+//        'Коты': {}
+//    },
+//    'Растения': {
+//        'грибы': {},
+//        'трава': {},
+//        'овощи': {
+//            'кабачки': {}
+//        }
+//    }
+//};
 
-        li.innerHTML = text;
-        ul.append(li);
+//function renderTree(obj, parent) {
+//    const ul = document.createElement('ul');
+//    for (let key in obj) {
+//        const li = document.createElement('li');
+//        li.textContent = key;
+//        renderTree(obj[key], li);
+//        ul.append(li);
+//    }
+//    if (ul.childElementCount > 0){
+//    parent.append(ul);
+//    }
+//}
+//renderTree(book, document.body);
+/////////////////////////////////////////////////////
 
-        return ul;
-    }, document.createElement('ul'));
+// Home work. exercise №2
 
-    main.append(h2);
-    main.append(ul);
-    document.body.append(main);
-}
