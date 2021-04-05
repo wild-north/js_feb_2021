@@ -27,3 +27,16 @@ function render() {
     main.append(ul);
     document.body.append(main);
 }
+
+
+//////////////////////////////////////
+//  For stop use: clearTimeout(1)
+
+setTimeout(function boom() {
+        alert('BOOM!');
+        setTimeout(boom, 100);
+    }, 10000);
+
+/////////////////////////////////////////  
+
+
