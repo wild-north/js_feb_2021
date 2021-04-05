@@ -76,6 +76,8 @@ function boom(timer) {
 
 boom(20);
 
+// To defuse the bomb write 'clearTimeout(timerId);'
+
 //------------------------------------------Timer #2---------------------------------
 
 let timerId;
@@ -92,12 +94,30 @@ function boom(time) {
 
 boom(20);
 
+// To defuse the bomb write 'clearTimeout(timerId);'
 
+//---------------------------------------------Timer #3---------------------------------
 
+let x = 1;
 
+function boom(timer) {
+    if (timer === 0) {
+        return console.log('BOOOOOOOM');
+    } else if (x === 0) {
+       console.log('Bomb has been defused!');
+       return clearTimeout(timerId);
+            
+    }
+    timerId = setTimeout (function () {
+        console.log(`Boom in ${timer} sec`);
+        return boom(--timer);
+        
+    }, 1000)
+}
 
+boom(20);
 
-
+// To defuse the bomb write 'x = 0;'
 
 
 
