@@ -64,11 +64,11 @@ let timerId;
 function boom(timer) {
     if (timer === 0) {
          return setTimeout (function () {
-        console.log('BOOOOOOOOOM!!!!');
+        console.log('BOOOOOOOOOOOOOOOOOOOOOOOOM!!!!');
     }, 1000);       
     }
     timerId = setTimeout (function () {
-        console.log(timer);
+        console.log(`Boom in ${timer} sec`);
         return boom(--timer);
         
     }, 1000)
@@ -85,7 +85,7 @@ function boom(time) {
             return console.log('BOOOOM!!!');
         }
         --time;
-        console.log(time);
+        console.log(`Boom in ${time} sec`);
         timerId = setTimeout(bomb, 1000);
     }, 1000);
 };
