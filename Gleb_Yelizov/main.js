@@ -31,7 +31,7 @@
 
 //-------------------------------------------------------------Homework lesson_08--------------------------------------------------
 
-//------------------------first task----------------------------
+//------------------------First task----------------------------
 let book = {
     'Животные': {
         'Олени': {},
@@ -68,68 +68,158 @@ renderTree(book, document.body);
 
 //--------------------------------------------Second task-----------------------------------------
 
-let wiredSystem = {
-    'A': {
-        'O': {
-            'A': [0, 1],
-            'N': [1],
+//--------------initial electric schemes-------------
+
+const scheme1 = {
+    name: 'gate',
+    type: 'xor',
+    children: [
+    {
+        name: 'gate',
+        type: 'and',
+        children: [
+        {
+            name: 'switch',
+            state: true
         },
-        'X': {
-            'X': [0, 1],
-            'A': [0, 0],
+        {
+            name: 'switch',
+            state: false
         }
-    }
+        ]
+    }, {
+        name: 'gate',
+        type: 'not',
+        children: [{
+            name: 'switch',
+            state: true
+        }]
+    }]
 };
 
-console.log( bulbStatus(wiredSystem) );
-
-function bulbStatus(obj) {    
-    if (Array.isArray(Object.values(obj))) {
-        for (let key in obj) {            
-            if (obj[key] = 'A') {
-                return getAnd(obj[0], obj[1]);
-            } else if (obj[key] = 'O') {
-                return getOr(obj[0], obj[1]);
-            } else if (obj[key] = 'N') {
-                return getNot(obj[0]);
-            } else if (obj[key] = 'X') {
-                return getXor(obj[0], obj[1]);
+const scheme2 = {
+    name: 'gate',
+    type: 'and',
+    children: [
+    {
+        name: 'gate',
+        type: 'or',
+        children: [
+        {
+            name: 'switch',
+            state: true
+        },
+        {
+            name: 'gate',
+            type: 'xor',
+            children: [
+            {
+                name: 'switch',
+                state: false
+            },
+            {
+                name: 'gate',
+                type: 'not',
+                children: [
+                {
+                    name: 'switch',
+                    state: true
+                }
+                ]
             }
+            ]
         }
+        ]
+    }, {
+        name: 'gate',
+        type: 'not',
+        children: [
+        {
+            name: 'switch',
+            state: true
+        }
+        ]
+    }
+    ]
+};
+
+const scheme3 = {
+    name: 'gate',
+    type: 'xor',
+
+    children: [
+    {
+        name: 'gate',
+        type: 'not',
+        children: [
+        {
+            name: 'switch',
+            state: false
+        }
+        ]
+    }, {
+        name: 'gate',
+        type: 'or',
+        children: [
+        {
+            name: 'gate',
+            type: 'or',
+            children: [
+            {
+                name: 'switch',
+                state: false
+            },
+            {
+                name: 'gate',
+                type: 'and',
+                children: [{
+                    name: 'switch',
+                    state: false
+                },{
+                    name: 'switch',
+                    state: true
+                }]
+            }
+            ]
+        },
+        {
+            name: 'switch',
+            state: false
+        }
+        ]
+    }
+    ]
+};
+
+//------------------printing results---------------------
+
+console.log( 'result for scheme 1 - ' + newElectric(scheme1) );
+console.log( 'result for scheme 2 - ' + newElectric(scheme2) );
+console.log( 'result for scheme 3 - ' + newElectric(scheme3) );
+
+//--------------functions to obtain results----------------
+
+function newElectric(obj) {
+    if (obj.name === 'switch') {
+        return obj.state;
+    }
+    let resultArray = obj.children.map(function(item) {
+        return newElectric(item);
+    });
+
+    return getLogic(obj.type, resultArray);
+}
+
+function getLogic(type, array) {
+    switch(type) {
+        case 'and': 
+            return array[0] && array[1];
+        case 'or': 
+            return array[0] || array[1];
+        case 'xor': 
+            return !!(array[0] ^ array[1]);
+        case 'not': 
+            return !array[0];
     }
 }
-    
-    for (let key in obj) {
-        let temp = 0;
-        
-        if (!Array.isArray(Object.values(obj))) {
-            if (obj[key] = 'A') {
-                temp = getAnd(Object.values(obj.key[0]), Object.values(obj.key[1]));
-            } else if (obj[key] = 'O') {
-                temp = getOr(Object.values(obj.key[0]), Object.values(obj.key[1]));
-            } else if (obj[key] = 'N') {
-                temp = getNot(Object.values(obj.key[0]));
-            } else if (obj[key] = 'X') {
-                temp = getXor(Object.values(obj.key[0]), Object.values(obj.key[1]));
-            }
-        }
-        return temp;   
-    }
-}
 
-
-function getAnd(obj1, obj2) {
-    return (bulbStatus(obj1) && bulbStatus(obj2));
-}
-
-function getOr(obj1, obj2) {
-    return (bulbStatus(obj1) || bulbStatus(obj2));
-}
-
-function getNot(obj1) {
-    return (+!bulbStatus(obj1));
-}
-
-function getXor(obj1, obj2) {
-    return (bulbStatus(obj1) ^ bulbStatus(obj2));
-}
