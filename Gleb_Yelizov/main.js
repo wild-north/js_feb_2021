@@ -79,18 +79,18 @@ boom(20);
 //------------------------------------------Timer #2---------------------------------
 
 let timerId;
-function boom (time) {
-    timerId = setTimeout(function tick() {
+function boom(time) {
+    timerId = setTimeout(function bomb() {
         if (time === 1) {
             return console.log('BOOOOM!!!');
         }
         --time;
         console.log(time);
-        timerId = setTimeout(tick, 1000);
+        timerId = setTimeout(bomb, 1000);
     }, 1000);
 };
 
-boom(10);
+boom(20);
 
 
 
