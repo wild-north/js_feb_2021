@@ -63,14 +63,13 @@ alert( calculator.mul() );
 let timerId;
 function boom(timer) {
     if (timer === 0) {
-         return setTimeout (function () {
+         return setTimeout ( () => {
         console.log('BOOOOOOOOOOOOOOOOOOOOOOOOM!!!!');
     }, 1000);       
     }
-    timerId = setTimeout (function () {
+    timerId = setTimeout ( () => {
         console.log(`Boom in ${timer} sec`);
-        return boom(--timer);
-        
+        return boom(--timer);        
     }, 1000)
 };
 
@@ -105,13 +104,11 @@ function boom(timer) {
         return console.log('BOOOOOOOM');
     } else if (x === 0) {
        console.log('Bomb has been defused!');
-       return clearTimeout(timerId);
-            
+       return clearTimeout(timerId);            
     }
-    timerId = setTimeout (function () {
+    timerId = setTimeout (() => {
         console.log(`Boom in ${timer} sec`);
-        return boom(--timer);
-        
+        return boom(--timer);        
     }, 1000)
 }
 
