@@ -115,25 +115,3 @@ function boom(timer) {
 boom(20);
 
 // To defuse the bomb write 'x = 0;'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
