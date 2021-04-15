@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tree</title>
+</head>
+<body>
+<pre>
+		Wired system.
+
+		Your task in this assignment is to determine whether the bulb element of a wired system will be on or off.
+
+		Simple visualisation example of wiring system
+
+		0-------------|
+		              A------------|
+		1-------------|            |
+		                           X------------@
+		1-------------|            |
+		              N------------|
+		There are 3 types of elements in the system:
+
+		switches (0(off), 1(on))
+		gates (A(and), O(or), N(not), X(xor))
+		light bulb (@)
+		switches can have one of these states: 0, 1
+
+		gates are logical operators, they transform signals with their internal logic:
+
+		+--------------------------+
+		|  and gate                |
+		+--------+--------+--------+
+		| Input1 | Input2 | Output |
+		| 1      | 1      | 1      |
+		| 1      | 0      | 0      |
+		| 0      | 1      | 0      |
+		| 0      | 0      | 0      |
+		+--------+--------+--------+
+		+--------------------------+
+		|  or gate                 |
+		+--------+--------+--------+
+		| Input1 | Input2 | Output |
+		| 1      | 1      | 1      |
+		| 1      | 0      | 1      |
+		| 0      | 1      | 1      |
+		| 0      | 0      | 0      |
+		+--------+--------+--------+
+		+--------------------------+
+		|  xor gate                |
+		+--------+--------+--------+
+		| Input1 | Input2 | Output |
+		| 1      | 1      | 0      |
+		| 1      | 0      | 1      |
+		| 0      | 1      | 1      |
+		| 0      | 0      | 0      |
+		+--------+--------+--------+
+		+-------------------+
+		| not gate          |
+		+----------+--------+
+		| Input    | Output |
+		| 1        | 0      |
+		| 0        | 1      |
+		+----------+--------+
+		Your assignment is to write a program which will output 0 or 1 depending on which signal will be on bulb element in the wired system.
+
+		Some additional details.
+
+		Lets think how to represent the wired system by a data structure. Create a wired system with at least 10 levels of elements. switch elements should be present on at least 2 different levels.
+
+
+</pre>
+</body>
+</html>
+
+<script>
+    var scheme1 = {
+        name: 'gate',
+        type: 'xor',
+        children: [
+        {
+            name: 'gate',
+            type: 'and',
+            children: [
+            {
+                name: 'switch',
+                state: true
+            },
+            {
+                name: 'switch',
+                state: false
+            }
+            ]
+        }, {
+            name: 'gate',
+            type: 'not',
+            children: [
+            {
+                name: 'switch',
+                state: true
+            }
+            ]
+        }
+        ]
+    },
+
+    scheme2 = {
+        name: 'gate',
+        type: 'and',
+        children: [
+        {
+            name: 'gate',
+            type: 'or',
+            children: [
+            {
+                name: 'switch',
+                state: true
+            },
+            {
+                name: 'gate',
+                type: 'xor',
+                children: [
+                {
+                    name: 'switch',
+                    state: false
+                },
+                {
+                    name: 'gate',
+                    type: 'not',
+                    children: [
+                    {
+                        name: 'switch',
+                        state: true
+                    }
+                    ]
+                }
+                ]
+            }
+            ]
+        }, {
+            name: 'gate',
+            type: 'not',
+            children: [
+            {
+                name: 'switch',
+                state: true
+            }
+            ]
+        }
+        ]
+    },
+
+    scheme3 = {
+        name: 'gate',
+        type: 'xor',
+
+        children: [
+        {
+            name: 'gate',
+            type: 'not',
+            children: [
+            {
+                name: 'switch',
+                state: false
+            }
+            ]
+        }, {
+            name: 'gate',
+            type: 'or',
+            children: [
+            {
+                name: 'gate',
+                type: 'or',
+                children: [
+                {
+                    name: 'switch',
+                    state: false
+                },
+                {
+                    name: 'gate',
+                    type: 'and',
+                    children: [
+                    {
+                        name: 'switch',
+                        state: false
+                    },
+                    {
+                        name: 'switch',
+                        state: true
+                    }
+                    ]
+                }
+                ]
+            },
+            {
+                name: 'switch',
+                state: false
+            }
+            ]
+        }
+        ]
+    };
+
+function (scheme) {
+
+}
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
