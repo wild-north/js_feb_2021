@@ -32,28 +32,26 @@
 
 //-----------------------calculator------------------
 
-let calculator = {};
+function Calculator() {
+    this.read = function(a, b) {
+        this.a = a;
+        this.b = b;
+    }
+    
+    this.sum = function() {
+       return this.a + this.b;
+    },
 
-function read() {
-    this.firstValue = +prompt("Введите первое число", '');
-    this.secondValue = +prompt("Введите второе число", '');
+    this.mul = function() {
+        return this.a * this.b;
+    }
 }
 
-function sum() {
-   return this.firstValue + this.secondValue;
-}
-
-function mul() {
-    return this.firstValue * this.secondValue;
-}
-
-calculator.read = read;
-calculator.sum = sum;
-calculator.mul = mul;
+let calculator = new Calculator();
 
 console.log(calculator);
 
-calculator.read();
+calculator.read(3, 4);
 
 alert( calculator.sum() );
 alert( calculator.mul() );
@@ -63,9 +61,7 @@ alert( calculator.mul() );
 let timerId;
 function boom(timer) {
     if (timer === 0) {
-         return setTimeout ( () => {
-        console.log('BOOOOOOOOOOOOOOOOOOOOOOOOM!!!!');
-    }, 1000);       
+         return console.log('BOOOOOOOOOOOOOOOOOOOOOOOOM!!!!');           
     }
     timerId = setTimeout ( () => {
         console.log(`Boom in ${timer} sec`);
