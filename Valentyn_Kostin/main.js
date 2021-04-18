@@ -100,7 +100,7 @@ function boom() {
 
 boom();
 
-//Доп задание
+//Доп задание первый вариант. 
 
 function startBomb () {
     let counter = prompt('Через какое время активировать функцию BOOM?', );
