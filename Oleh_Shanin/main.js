@@ -5,7 +5,7 @@ class Horse {
     }
     
     runAway(a) {
-        return this.milege + a;
+        return this.milege += a;
     }
 
 }
@@ -30,7 +30,7 @@ class Horse {
             alert("СЕРГЕЙ СВОБОДЕН");
 
         } else (endOfLearningJavaScript + this.milege < 24); {
-            return endOfLearningJavaScript + this.milege;
+            return endOfLearningJavaScript += this.milege;
 
         }
 
