@@ -1,29 +1,44 @@
-document.addEventListener('DOMContentLoaded', render);
+class Horse {
+    constructor(name, milege = 11){
+        this.name = name;
+        this.milege = milege;
+    }
+    
+    runAway(a) {
+        return this.milege += a;
+    }
 
-const text = {
-    header: 'This is the file for your home tasks',
-    list: [
-        'Please, write your JavaScript code in <strong>main.js</strong>',
-        'Please, write your CSS code in <strong>styles.css</strong>',
-        'Please, write your HTML right here in <strong>index.html</strong>'
-    ]
-};
-
-function render() {
-    const main = document.createElement('main');
-    const h2 = document.createElement('h2');
-    h2.textContent = text.header;
-
-    const ul = text.list.reduce((ul, text) => {
-        const li = document.createElement('li');
-
-        li.innerHTML = text;
-        ul.append(li);
-
-        return ul;
-    }, document.createElement('ul'));
-
-    main.append(h2);
-    main.append(ul);
-    document.body.append(main);
 }
+
+let b = new Horse("Pegas");
+
+b.runAway(13);
+
+
+
+///// совесем немного креатива 
+
+
+class Horse {
+    constructor(name, milege = 11){
+        this.name = name;
+        this.milege = milege;
+    }
+    
+    runAway(endOfLearningJavaScript) {
+        if (endOfLearningJavaScript + this.milege >= 24) {
+            alert("СЕРГЕЙ СВОБОДЕН");
+
+        } else (endOfLearningJavaScript + this.milege < 24); {
+            return endOfLearningJavaScript += this.milege;
+
+        }
+
+    }
+
+}
+
+let b = new Horse("Sergey");
+
+b.runAway(13);
+b.runAway(10);
