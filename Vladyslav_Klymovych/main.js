@@ -56,7 +56,6 @@ function render() {
     function arrayPerimeter(array) {
         let resultArray = [];
         let sizeLen = array.length;
-        let arrLen = Math.ceil((sizeLen) / 2 );
         for (let i = 0; i < 1; i++){
             for (let j = 0; j < sizeLen; j++) {
                 resultArray.push (array[i][i + j]);
