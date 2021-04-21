@@ -27,3 +27,23 @@ function render() {
     main.append(ul);
     document.body.append(main);
 }
+
+
+function Calculator() {
+
+    this.read = function() {
+        this.i = +prompt('first value', 0);
+        this.q = +prompt('second value', 0);
+    };
+    this.sum = function() {
+        return this.i + this.q;
+    };
+    this.mul = function() {
+        return this.i * this.q;
+    };
+};
+
+let calculator = new Calculator();
+calculator.read()
+console.log(calculator.sum() );
+console.log(calculator.mul() );
