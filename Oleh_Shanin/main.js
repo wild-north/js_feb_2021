@@ -1,29 +1,53 @@
-document.addEventListener('DOMContentLoaded', render);
+class Horse {
+    constructor(name, mileage = 0){
+        this.name = name;
+        this.mileage = mileage;
 
-const text = {
-    header: 'This is the file for your home tasks',
-    list: [
-        'Please, write your JavaScript code in <strong>main.js</strong>',
-        'Please, write your CSS code in <strong>styles.css</strong>',
-        'Please, write your HTML right here in <strong>index.html</strong>'
-    ]
+        }
+
+    runAway(value) { 
+        this.mileage += value;
+        Horse.prototype.totalMileage += this.mileage
+        }
+
+    }
+
+const helper = {
+    totalMileage: 0
 };
 
-function render() {
-    const main = document.createElement('main');
-    const h2 = document.createElement('h2');
-    h2.textContent = text.header;
 
-    const ul = text.list.reduce((ul, text) => {
-        const li = document.createElement('li');
+Object.assign(Horse.prototype, helper);
 
-        li.innerHTML = text;
-        ul.append(li);
 
-        return ul;
-    }, document.createElement('ul'));
 
-    main.append(h2);
-    main.append(ul);
-    document.body.append(main);
-}
+const h1 = new Horse("idk");
+const h2 = new Horse("idko");
+
+h1.runAway(4);
+h2.runAway(5)
+
+/////// не обращай внимания это мои неудачные попытки 
+//const tmp = Horse;
+
+//Horse.prototype = helper;
+//Horse.prototype.constructor = tmp;
+
+
+ //Horse.prototype.runAway = function(value) { 
+ //       this.mileage += value;
+ //       return this.totalMileage += value;
+ //       }
+
+
+;
+
+
+
+
+
+
+
+
+
+
