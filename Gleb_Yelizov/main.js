@@ -114,7 +114,7 @@ let global = {
         this.tiredness += 1;        
         this.run(--miles);
     }        
-}
+};
 
 function MakeHorse(name = 'Anonimous', initMileage = 0, initTiredness = 0) {
     this.name = name;
