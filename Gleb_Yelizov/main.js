@@ -28,86 +28,119 @@
 //     document.body.append(main);
 // }
 
-//-------------------------------------------------------Homework Lesson_09-------------------------------------
+//-------------------------------------------------------Homework Lesson_12-------------------------------------
 
-//-----------------------calculator------------------
-
-function Calculator() {
-    this.read = function(a, b) {
-        this.a = a;
-        this.b = b;
+class H {
+    constructor (name = 'Anonimous', initMilage = 0) {
+        this.name = name;
+        this.milage = initMilage;
     }
+    run(miles) {
+        this.milage += miles;
+    }
+    get status() {
+        return `${this.name} with ${this.milage} miles milage`;
+    }
+    set hasWon(time) {
+        this.name = 'Brave horse' + this.name;        
+        console.log(`${this.status} has won the race with with ${time} minutes result`);
+    }
+}
+
+let h = new H('Truthy', 100);
+console.log(h);
+
+h.run(200);
+
+console.log(h);
+
+console.log(h.status);
+
+h.hasWon = 2;
+
+//-------------------------------------------------------Homework Lesson_13-------------------------------------
+
+//------------------------------------First task---------------------------------
+
+let globalMileage = {
+    totalMileage: 0,
+    run(miles) {
+        this.mileage += miles;
+        this.__proto__.totalMileage += miles;
+    }
+}
+
+function MakeHorse(name = 'Anonimous', initMileage = 0) {
+    this.name = name;
+    this.mileage = initMileage;        
+}
+
+MakeHorse.prototype = globalMileage;
+
+let horse1 = new MakeHorse('Truthy');
+let horse2 = new MakeHorse('Falsy');
+console.log(horse1);
+console.log(horse2);
+console.log(globalMileage);
+
+horse1.run(200);
+horse2.run(300);
+
+console.log(horse1);
+console.log(horse2);
+console.log(globalMileage);
+
+//------------------------------------Second task---------------------------------
+
+let global = {
+    totalMileage: 0,
     
-    this.sum = function() {
-       return this.a + this.b;
-    },
+    rest(myFunction, restToRun) {
+        console.log(`${this.name} is resting`);        
+        setTimeout( () => {
+            console.log(`${this.name} is running now`);
+            return myFunction.run(restToRun);
+        }, 5000);},
 
-    this.mul = function() {
-        return this.a * this.b;
-    }
+    run(miles) {
+        if (miles === 0) {
+            return console.log(`${this.name} has finished`);
+        } else if (this.tiredness === 10) {
+            this.tiredness = 0;            
+            return this.rest(this, miles);
+        }        
+        this.mileage += 1;
+        this.__proto__.totalMileage += 1;
+        this.tiredness += 1;        
+        this.run(--miles);
+    }        
 }
 
-let calculator = new Calculator();
-
-console.log(calculator);
-
-calculator.read(3, 4);
-
-alert( calculator.sum() );
-alert( calculator.mul() );
-
-//------------------------------------------Timer #1-----------------------------------
-
-let timerId;
-function boom(timer) {
-    if (timer === 0) {
-         return console.log('BOOOOOOOOOOOOOOOOOOOOOOOOM!!!!');           
-    }
-    timerId = setTimeout ( () => {
-        console.log(`Boom in ${timer} sec`);
-        return boom(--timer);        
-    }, 1000)
-};
-
-boom(20);
-
-// To defuse the bomb write 'clearTimeout(timerId);'
-
-//------------------------------------------Timer #2---------------------------------
-
-let timerId;
-function boom(time) {
-    timerId = setTimeout(function bomb() {
-        if (time === 1) {
-            return console.log('BOOOOM!!!');
-        }
-        --time;
-        console.log(`Boom in ${time} sec`);
-        timerId = setTimeout(bomb, 1000);
-    }, 1000);
-};
-
-boom(20);
-
-// To defuse the bomb write 'clearTimeout(timerId);'
-
-//---------------------------------------------Timer #3---------------------------------
-
-let x = 1;
-
-function boom(timer) {
-    if (timer === 0) {
-        return console.log('BOOOOOOOM');
-    } else if (x === 0) {
-       console.log('Bomb has been defused!');
-       return clearTimeout(timerId);            
-    }
-    timerId = setTimeout (() => {
-        console.log(`Boom in ${timer} sec`);
-        return boom(--timer);        
-    }, 1000)
+function MakeHorse(name = 'Anonimous', initMileage = 0, initTiredness = 0) {
+    this.name = name;
+    this.mileage = initMileage;
+    this.tiredness = initTiredness;
 }
 
-boom(20);
+MakeHorse.prototype = global;
 
-// To defuse the bomb write 'x = 0;'
+let horse1 = new MakeHorse('Truthy');
+let horse2 = new MakeHorse('Falsy');
+
+// To ckeck how it works:
+
+function consLog() {
+    console.log(horse1);
+    console.log(horse2);
+    console.log(global);
+}
+consLog();
+console.log(`First race has began!!!!!!!!!!!!!!!!!!!!!!`);
+horse1.run(3);
+horse2.run(3);
+
+tr0 = setTimeout( () => console.log(`Second race has began!!!!!!!!!!!!!!!!!!!!!!`), 4900);
+tr1 = setTimeout( () => horse1.run(10), 5000);
+tr2 = setTimeout( () => horse2.run(10), 5000);
+tr3 = setTimeout( () => consLog(), 15000);
+
