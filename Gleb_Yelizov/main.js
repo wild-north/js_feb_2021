@@ -68,7 +68,7 @@ let globalMileage = {
         this.mileage += miles;
         this.__proto__.totalMileage += miles;
     }
-}
+};
 
 function MakeHorse(name = 'Anonimous', initMileage = 0) {
     this.name = name;
