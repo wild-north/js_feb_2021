@@ -193,17 +193,14 @@ class Clock {
 
         if (temp > 300000 || temp < 0) {
             return console.log('не более 5 минут и в будущем');
-        }
-        
+        }        
         setTimeout( () => console.log('Alarm'), temp);        
     }
 
     setTimer(x) {
-        let temp = () => ( +(x.split(':')[0] * 60) + +(x.split(':')[1]) );
+        let temp = () => ( +(x.split(':')[0] * 60) + +(x.split(':')[1]) );       
         
-        
-        this.timer(temp());
-        
+        this.timer( temp() );        
     }
 
     timer(y) {
@@ -218,11 +215,8 @@ class Clock {
 }
 
 let clock = new Clock();
-
-clock.getTime(); // выводит время в консоль (в формате 21:36:02)
-
+clock.getTime();
 clock.setAlarm('18:26');
-
-clock.setTimer('0:15'); // в консоли выводить обратный отсчет до 0
+clock.setTimer('0:15');
 
 
