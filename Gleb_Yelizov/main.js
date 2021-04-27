@@ -208,7 +208,7 @@ class Clock {
             return console.log('Alarm');           
         }
         setTimeout ( () => {
-            console.log(`${y}`);
+            console.log(`${(y - (y % 60)) / 60}:${y % 60}`);
             return this.timer(--y);        
         }, 1000)
     }
