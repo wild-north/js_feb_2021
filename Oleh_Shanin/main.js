@@ -1,58 +1,36 @@
-class Clock{
-    getTimes(){
-        let time = new Date();
-        let a = time.getHours();
-        let b = time.getMinutes();
-        let c = time.getSeconds();
-    
-            console.log(`${a}:${b}:${b}`);
-            
-        }
-
-    getAlarm(){
-        let dataNow = new Date();
-        let elseData = new Date();
-        let result = elseData - dataNow;
-
-        elseData.setHours(dataNow.getHours() );
-        elseData.setMinutes(dataNow.getMinutes() + 5);
-        elseData.setSeconds(dataNow.getSeconds() );
-
-            if(result > 0){
-                setTimeout(function(){
-                    console.log("WAKE UP!")
-             },result);
-
-          }
-        return elseData;
-        }
-        
-    setTimer(minutes){
-        let arr = minutes.split(':');
-        arr = arr.map(Number);
-        let timeLater = new Date();
-
-        timeLater.setMinutes(timeLater.getMinutes() + arr[0]);
-        timeLater.setSeconds(timeLater.getSeconds() + arr[1]);
-
-            setTimeout(function teak(){
-                let timeNow = Date.now();
-
-                if(timeLater > timeNow){
-                    console.log(`${timeLater} - ${timeNow}`);
-                        setTimeout(teak, 1000);
-                }else {
-                    console.log("WE DONE");
-                    }
-
-            },1000);
+class Horse {
+    constructor(name, mileage = 0){
+        this.name = name;
+        this.mileage = mileage;
 
         }
-        
-    };
 
+    runAway(value) { 
+        this.mileage += value;
+        Horse.prototype.totalMileage += this.mileage
+        }
 
+    }
 
-let clock = new Clock();
+const helper = {
+    totalMileage: 0
+};
 
+Object.assign(Horse.prototype, helper);
 
+const h1 = new Horse("idk");
+const h2 = new Horse("idko");
+
+h1.runAway(4);
+h2.runAway(5)
+
+/////// не обращай внимания это мои неудачные попытки 
+//const tmp = Horse;
+
+//Horse.prototype = helper;
+//Horse.prototype.constructor = tmp;
+
+ //Horse.prototype.runAway = function(value) { 
+ //       this.mileage += value;
+ //       return this.totalMileage += value;
+ //       }
