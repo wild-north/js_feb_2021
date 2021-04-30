@@ -184,8 +184,11 @@ const h1 = new MakeHorse1();
 class Clock {
     getTime() {
         let time = new Date();
+        let hToShow = this.toProper(time.getHours());
+        let minToShow = this.toProper(time.getMinutes());
+        let secToShow = this.toProper(time.getSeconds());
         
-        return console.log(`${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`);
+        return console.log(`${hToShow}:${minToShow}:${secToShow}`);
     }
     
     setAlarm(time) {        
@@ -194,7 +197,7 @@ class Clock {
         if (temp > 300000 || temp < 0) {
             return console.log('не более 5 минут и в будущем');
         }        
-        setTimeout( () => console.log('Alarm'), temp);        
+        setTimeout( () => console.log(`Wake up! ${new Date()}`), temp);        
     }
 
     setTimer(x) {
@@ -205,18 +208,28 @@ class Clock {
 
     timer(y) {
         if (y === 0) {
-            return console.log('Alarm');           
+            return console.log('Timer has finished counting down');           
         }
         setTimeout ( () => {
-            console.log(`${(y - (y % 60)) / 60}:${y % 60}`);
+            let min = (y - (y % 60)) / 60;
+            let sec = y % 60;
+            console.log(`${this.toProper(min)}:${this.toProper(sec)}`);
             return this.timer(--y);        
         }, 1000)
+    }
+
+    toProper(temp) {
+        if (String(temp).length === 1) {
+            return '0' + temp;
+        } else {
+            return temp;
+        }
     }
 }
 
 let clock = new Clock();
 clock.getTime();
-clock.setAlarm('18:26');
-clock.setTimer('0:15');
+clock.setAlarm('22:32');
+clock.setTimer('00:15');
 
 
