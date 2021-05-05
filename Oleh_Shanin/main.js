@@ -1,59 +1,46 @@
-class Clock{
-    getTimes(){
-        let time = new Date();
-        let a = time.getHours();
-        let b = time.getMinutes();
-        let c = time.getSeconds();
-    
-            console.log(`${a}:${b}:${b}`);
-            
-        }
+class Clock {
+  getTimes() {
+    let time = new Date();
+    let hours = time.getHours();
+    let minutes = time.getMinutes();
+    let seconds = time.getSeconds();
 
-    getAlarm(){
-        let dataNow = new Date();
-        let elseData = new Date();
-        let result = elseData - dataNow;
+    console.log(`${hours}:${minutes}:${seconds}`);
+  }
 
-        elseData.setHours(dataNow.getHours() );
-        elseData.setMinutes(dataNow.getMinutes() + 5);
-        elseData.setSeconds(dataNow.getSeconds() );
+  getAlarm(minutes) {
+    let dataNow = new Date();
+    let elseData = new Date();
 
-            if(result > 0){
-                setTimeout(function(){
-                    console.log("WAKE UP!")
-             },result);
+    elseData.setMinutes(elseData.getMinutes() + minutes);
+    let result = elseData - dataNow;
 
-          }
-        return elseData;
-        }
-        
-    setTimer(minutes){
-        let arr = minutes.split(':');
-        arr = arr.map(Number);
-        let timeLater = new Date();
+    if (result > 0) {
+      setTimeout(function () {
+        console.log("WAKE UP!");
+      }, result);
+    }
+  }
 
-        timeLater.setMinutes(timeLater.getMinutes() + arr[0]);
-        timeLater.setSeconds(timeLater.getSeconds() + arr[1]);
+  setTimer(minutes) {
+    let arr = minutes.split(":");
+    arr = arr.map(Number);
+    let timeLater = new Date();
 
-            setTimeout(function teak(){
-                let timeNow = Date.now();
+    timeLater.setMinutes(timeLater.getMinutes() + arr[0]);
+    timeLater.setSeconds(timeLater.getSeconds() + arr[1]);
 
-                if(timeLater > timeNow){
-                    console.log(`${timeLater} - ${timeNow}`);
-                        setTimeout(teak, 1000);
-                }else {
-                    console.log("WE DONE");
-                    }
+    setTimeout(function teak() {
+      let timeNow = Date.now();
 
-            },1000);
-
-        }
-        
-    };
-
-
+      if (timeLater > timeNow) {
+        console.log(`${timeLater} - ${timeNow}`);
+        setTimeout(teak, 1000);
+      } else {
+        console.log("WE DONE");
+      }
+    }, 1000);
+  }
+}
 
 let clock = new Clock();
-
-
-
