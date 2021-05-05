@@ -1,29 +1,46 @@
-document.addEventListener('DOMContentLoaded', render);
+class Clock {
+  getTimes() {
+    let time = new Date();
+    let hours = time.getHours();
+    let minutes = time.getMinutes();
+    let seconds = time.getSeconds();
 
-const text = {
-    header: 'This is the file for your home tasks',
-    list: [
-        'Please, write your JavaScript code in <strong>main.js</strong>',
-        'Please, write your CSS code in <strong>styles.css</strong>',
-        'Please, write your HTML right here in <strong>index.html</strong>'
-    ]
-};
+    console.log(`${hours}:${minutes}:${seconds}`);
+  }
 
-function render() {
-    const main = document.createElement('main');
-    const h2 = document.createElement('h2');
-    h2.textContent = text.header;
+  getAlarm(minutes) {
+    let dataNow = new Date();
+    let elseData = new Date();
 
-    const ul = text.list.reduce((ul, text) => {
-        const li = document.createElement('li');
+    elseData.setMinutes(elseData.getMinutes() + minutes);
+    let result = elseData - dataNow;
 
-        li.innerHTML = text;
-        ul.append(li);
+    if (result > 0) {
+      setTimeout(function () {
+        console.log("WAKE UP!");
+      }, result);
+    }
+  }
 
-        return ul;
-    }, document.createElement('ul'));
+  setTimer(minutes) {
+    let arr = minutes.split(":");
+    arr = arr.map(Number);
+    let timeLater = new Date();
 
-    main.append(h2);
-    main.append(ul);
-    document.body.append(main);
+    timeLater.setMinutes(timeLater.getMinutes() + arr[0]);
+    timeLater.setSeconds(timeLater.getSeconds() + arr[1]);
+
+    setTimeout(function teak() {
+      let timeNow = Date.now();
+
+      if (timeLater > timeNow) {
+        console.log(`${timeLater} - ${timeNow}`);
+        setTimeout(teak, 1000);
+      } else {
+        console.log("WE DONE");
+      }
+    }, 1000);
+  }
 }
+
+let clock = new Clock();
