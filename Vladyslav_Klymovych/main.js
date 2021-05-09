@@ -27,3 +27,16 @@ function render() {
     main.append(ul);
     document.body.append(main);
 }
+function createTable(size) {
+    let str = '<table>';
+    for (let i = 0; i < size; i++){
+      str += '<tr>';
+      for(let j = 1; j < size; j++){
+        str += '<td>' + '1' + '</td>';
+
+      }
+      str += '</tr>';
+    }
+    str += '</table>';
+    document.body.innerHTML = str;
+}
