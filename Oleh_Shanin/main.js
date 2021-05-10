@@ -1,29 +1,23 @@
-document.addEventListener('DOMContentLoaded', render);
+let table = document.createElement("table");
 
-const text = {
-    header: 'This is the file for your home tasks',
-    list: [
-        'Please, write your JavaScript code in <strong>main.js</strong>',
-        'Please, write your CSS code in <strong>styles.css</strong>',
-        'Please, write your HTML right here in <strong>index.html</strong>'
-    ]
+function createTable(size) {
+  let counter = 0;
+
+  for (let i = 0; i < size; i++) {
+    let tr = document.createElement("tr");
+
+    for (let j = 0; j < size; j++) {
+      let td = document.createElement("td");
+
+      td.innerHTML = counter;
+      counter++;
+
+      tr.appendChild(td);
+    }
+
+    table.appendChild(tr);
+  }
 };
 
-function render() {
-    const main = document.createElement('main');
-    const h2 = document.createElement('h2');
-    h2.textContent = text.header;
-
-    const ul = text.list.reduce((ul, text) => {
-        const li = document.createElement('li');
-
-        li.innerHTML = text;
-        ul.append(li);
-
-        return ul;
-    }, document.createElement('ul'));
-
-    main.append(h2);
-    main.append(ul);
-    document.body.append(main);
-}
+document.body.append(table);
+createTable(10);
