@@ -1,6 +1,6 @@
-let table = document.createElement('table');
+let table = document.createElement("table");
 
-document.body.append(table);
+document.body.appendChild(table);
 
 function createTable(size) {
   let counter = 0;
@@ -14,7 +14,7 @@ function createTable(size) {
       td.innerHTML = counter;
       counter++;
 
-      td.appendChild(td);
+      tr.appendChild(td);
     }
 
     table.appendChild(tr);
