@@ -1,29 +1,26 @@
-document.addEventListener('DOMContentLoaded', render);
+const toggler = document.querySelector('.toggler');
+const menu = document.querySelector('.menu');
 
-const text = {
-    header: 'This is the file for your home tasks',
-    list: [
-        'Please, write your JavaScript code in <strong>main.js</strong>',
-        'Please, write your CSS code in <strong>styles.css</strong>',
-        'Please, write your HTML right here in <strong>index.html</strong>'
-    ]
+/* menu.style.cssText = `
+    display: none;
+    display: inline;
+`; */
+
+function openMenu() {
+  if (menu.style.display === "none") {
+    return (menu.style.display = "inline");
+  } else if (menu.style.display === "inline") {
+    return (menu.style.display = "none");
+  }
 };
 
-function render() {
-    const main = document.createElement('main');
-    const h2 = document.createElement('h2');
-    h2.textContent = text.header;
+//toggler.addEventListener("click", openMenu);
 
-    const ul = text.list.reduce((ul, text) => {
-        const li = document.createElement('li');
+///// хочу реализовать эту идею, но правильно 
 
-        li.innerHTML = text;
-        ul.append(li);
+toggler.addEventListener("click", openMenuS);
 
-        return ul;
-    }, document.createElement('ul'));
-
-    main.append(h2);
-    main.append(ul);
-    document.body.append(main);
-}
+function openMenuS(){
+    menu.classList.toggle('active');
+    
+};
