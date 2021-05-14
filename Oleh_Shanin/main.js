@@ -1,29 +1,48 @@
-document.addEventListener('DOMContentLoaded', render);
+// const toggler = document.querySelector(".toggler");
+// const menu = document.querySelector(".menu");
+// const dropdown = document.querySelector(".dropdown");
 
-const text = {
-    header: 'This is the file for your home tasks',
-    list: [
-        'Please, write your JavaScript code in <strong>main.js</strong>',
-        'Please, write your CSS code in <strong>styles.css</strong>',
-        'Please, write your HTML right here in <strong>index.html</strong>'
-    ]
+// function openMenu() {
+//   menu.classList.toggle("active");
+// };
+
+// function removeMenu(event) {
+//   if (event.target.closest("button")) {
+//     openMenu();
+//   } else if (event.target.closest("div")) {
+//     menu.classList.remove("active");
+//   }
+// };
+
+// dropdown.addEventListener("click", removeMenu);
+
+/// home work part 2
+
+const field = document.querySelector("#field");
+const ball = document.querySelector("#ball");
+
+  function touchMyBall(event) {
+  let fieldCoords = this.getBoundingClientRect();
+
+  let ballCoords = {
+    top:
+      event.clientY - fieldCoords.top - field.clientTop - ball.clientHeight / 2,
+    left:
+      event.clientX - fieldCoords.left - field.clientLeft - ball.clientWidth / 2,
+  };
+
+  if (ballCoords.top < 0) ballCoords.top = 0;
+  if (ballCoords.left < 0) ballCoords.left = 0;
+  if (ballCoords.left + ball.clientWidth > field.clientWidth) {
+    ballCoords.left = field.clientWidth - ball.clientWidth;
+  }
+  if (ballCoords.top + ball.clientHeight > field.clientHeight) {
+    ballCoords.top = field.clientHeight - ball.clientHeight;
+  }
+  ball.style.left = ballCoords.left + "px";
+  ball.style.top = ballCoords.top + "px";
 };
 
-function render() {
-    const main = document.createElement('main');
-    const h2 = document.createElement('h2');
-    h2.textContent = text.header;
+field.addEventListener("click",touchMyBall); 
 
-    const ul = text.list.reduce((ul, text) => {
-        const li = document.createElement('li');
 
-        li.innerHTML = text;
-        ul.append(li);
-
-        return ul;
-    }, document.createElement('ul'));
-
-    main.append(h2);
-    main.append(ul);
-    document.body.append(main);
-}

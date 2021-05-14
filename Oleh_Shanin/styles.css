@@ -1,15 +1,7 @@
-body {
+/* body {
     padding: 0;
     margin: 0;
-    background-color: bisque;
 }
-
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}   
 
 ul {
     padding: 0;
@@ -17,6 +9,39 @@ ul {
     list-style: none;
 }
 
-li {
-    font-size: 18px;
+.menu {
+    display: none;
+}
+
+.active {
+    display: block;
+} */
+
+#field {
+    width: 400px;
+    height: 350px;
+    border: 10px solid rgb(7, 34, 26);
+    background-color: #484e27;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+#ball {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    transition: all 1s;
+    display: block;
+    border-radius: 50%;
+    margin: 0;
+    background: -webkit-radial-gradient(100px 100px, circle, #5cabff, #000);
+    background: -moz-radial-gradient(100px 100px, circle, #5cabff, #000);
+    background: radial-gradient(100px 100px, circle, #5cabff, #000);
+}
+
+body {
+    height: 2000px;
 }
