@@ -19,8 +19,11 @@ function showMenu(event) {
     docBody.removeEventListener("click", hideMenu);
 }
 
-function hideMenu() {
-    menuLeft.classList.remove('active');
+function hideMenu(event) {
+    if (!event.target.closest('.menu')) {
+        menuLeft.classList.remove('active');
+    }
+    
 }
 
 //----Variation with arrow function------
