@@ -1,4 +1,4 @@
-/* body {
+body {
     padding: 0;
     margin: 0;
 }
@@ -15,9 +15,9 @@ ul {
 
 .active {
     display: block;
-} */
+}
 
-#field {
+/* #field {
     width: 400px;
     height: 350px;
     border: 10px solid rgb(7, 34, 26);
@@ -44,4 +44,4 @@ ul {
 
 body {
     height: 2000px;
-}
+} */
