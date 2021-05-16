@@ -1,29 +1,55 @@
-document.addEventListener('DOMContentLoaded', render);
+const toggler = document.querySelector(".toggler");
+const menu = document.querySelector(".menu");
+const dropdown = document.querySelector(".dropdown");
 
-const text = {
-    header: 'This is the file for your home tasks',
-    list: [
-        'Please, write your JavaScript code in <strong>main.js</strong>',
-        'Please, write your CSS code in <strong>styles.css</strong>',
-        'Please, write your HTML right here in <strong>index.html</strong>'
-    ]
+function openMenu() {
+    menu.classList.toggle("active");
+    if (menu.classList.contains("active")){
+        window.addEventListener("click", menuClassList);
+    }
 };
 
-function render() {
-    const main = document.createElement('main');
-    const h2 = document.createElement('h2');
-    h2.textContent = text.header;
+function removeMenu(event) {  
+   if (event.target.closest("button")) {
+     openMenu();
+    } else if (!event.target.closest("button")) {
+  }
+};
 
-    const ul = text.list.reduce((ul, text) => {
-        const li = document.createElement('li');
+function menuClassList(event) {
+    if (!event.target.closest("button")){
+        menu.classList.remove("active");
+        window.removeEventListener("click", menuClassList);
+    }
+};
 
-        li.innerHTML = text;
-        ul.append(li);
+dropdown.addEventListener("click",removeMenu);
 
-        return ul;
-    }, document.createElement('ul'));
+/// home work part 2
 
-    main.append(h2);
-    main.append(ul);
-    document.body.append(main);
-}
+// const field = document.querySelector("#field");
+// const ball = document.querySelector("#ball");
+
+//   function touchMyBall(event) {
+//   let fieldCoords = event.target.getBoundingClientRect();
+
+//   let ballCoords = {
+//     top:
+//       event.clientY - fieldCoords.top - field.clientTop - ball.clientHeight / 2,
+//     left:
+//       event.clientX - fieldCoords.left - field.clientLeft - ball.clientWidth / 2,
+//   };
+
+//   if (ballCoords.top < 0) ballCoords.top = 0;
+//   if (ballCoords.left < 0) ballCoords.left = 0;
+//   if (ballCoords.left + ball.clientWidth > field.clientWidth) {
+//     ballCoords.left = field.clientWidth - ball.clientWidth;
+//   }
+//   if (ballCoords.top + ball.clientHeight > field.clientHeight) {
+//     ballCoords.top = field.clientHeight - ball.clientHeight;
+//   }
+//   ball.style.left = ballCoords.left + "px";
+//   ball.style.top = ballCoords.top + "px";
+// };
+
+// field.addEventListener("click",touchMyBall); 
