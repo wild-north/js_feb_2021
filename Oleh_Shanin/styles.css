@@ -1,7 +1,15 @@
 body {
     padding: 0;
     margin: 0;
+    background-color: bisque;
 }
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}   
 
 ul {
     padding: 0;
@@ -9,6 +17,7 @@ ul {
     list-style: none;
 }
 
+<<<<<<< HEAD
 .menu {
     display: none;
 }
@@ -45,3 +54,8 @@ ul {
 body {
     height: 2000px;
 } */
+=======
+li {
+    font-size: 18px;
+}
+>>>>>>> parent of 794ee1c (my home work part 17)

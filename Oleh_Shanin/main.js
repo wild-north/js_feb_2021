@@ -53,5 +53,3 @@ dropdown.addEventListener("click",removeMenu);
 // };
 
 // field.addEventListener("click",touchMyBall); 
-
-
