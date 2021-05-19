@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', function() {
 
 
 // ---------------Lesson_16 Homework----------------------------------------------------------------------------
@@ -13,8 +14,8 @@ menuButtonLeft.addEventListener("click", showMenu);
 function showMenu(event) {
     event.stopPropagation();
     menuLeft.classList.toggle('active');
-    if (menuLeft.classList.contains('active') ) {
-        return docBody.addEventListener("click", hideMenu);        
+    if (menuLeft.classList.contains('active')) {
+        return docBody.addEventListener("click", hideMenu);
     }
     docBody.removeEventListener("click", hideMenu);
 }
@@ -23,7 +24,7 @@ function hideMenu(event) {
     if (!event.target.closest('.menu')) {
         menuLeft.classList.remove('active');
     }
-    
+
 }
 
 //----Variation with arrow function------
@@ -53,9 +54,8 @@ menuButtonRight.addEventListener("click", menuShow);
 function menuShow() {
     let temp = menuRight.getAttribute('style');
 
-    (temp === "display: block")
-        ? menuRight.setAttribute('style', "display: none")
-        : menuRight.setAttribute('style', "display: block")    
+    let temp2 = (temp === "display: block") ? 
+    menuRight.setAttribute('style', "display: none") : menuRight.setAttribute('style', "display: block");
 }
 
 //----Second solution---------------------------------------------------
@@ -98,7 +98,7 @@ function moveBall(event) {
     let fieldCoords = field.getBoundingClientRect();
     let ballTop = event.clientY - fieldCoords.top - field.clientTop - ball.offsetHeight / 2;
     let ballLeft = event.clientX - fieldCoords.left - field.clientLeft - ball.offsetWidth / 2;
-    
+
     if (ballTop < 0) {
         ballTop = 0;
     }
@@ -113,17 +113,54 @@ function moveBall(event) {
     }
 
     ball.style.top = ballTop + 'px';
-    ball.style.left = ballLeft +'px';    
+    ball.style.left = ballLeft + 'px';
 }
 
 
+});
 
 
 
 
 
+let xhr = new XMLHttpRequest();
+xhr.open('GET', 'https://jsonplaceholder.typicode.com/users');
+xhr.responseType = 'json';
+xhr.send();
+
+xhr.onload = function() {
+    if (xhr.status != 200) {
+        console.log('Ошибка: ' + xhr.status);
+        return;
+    } else {
+        let resultToappend = [];
+        let ul = document.createElement('ul');
+    
+        xhr.response.map((item, index) => {
+            resultToappend.push(item.id + ' - ' + item.name)});
+        
+    }
+
+xhr.onerror = function() {
+    console.log('error');    
+};
 
 
+function appendLi(result) {
+  let fragment = new DocumentFragment();
+
+  for (let i = 0; i < result.length; i++) {
+    let li = document.createElement('li');
+    li.append();
+    fragment.append(li);
+  }
+
+  return fragment;
+}
+
+ul.append(getListContent()); // (*)
+    
+};
 
 
 
