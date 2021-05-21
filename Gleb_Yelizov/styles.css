@@ -1,22 +1,8 @@
 body {
-    padding: 0;
-    margin: 0;
-    background-color: bisque;
-}
-
-main {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}   
-
-ul {
-    padding: 0;
+    width: 100%;
+    height: 100vh;
     margin: 0;
-    list-style: none;
-}
-
-li {
-    font-size: 18px;
+    padding: 0;
 }
