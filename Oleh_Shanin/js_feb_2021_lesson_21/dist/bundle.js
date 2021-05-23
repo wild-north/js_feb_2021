@@ -1,0 +1,1 @@
+(()=>{"use strict";fetch("https://jsonplaceholder.typicode.com/users").then((e=>e.json())).then((e=>function(e){let t=document.createElement("ul");for(let n=0;n<e.length;n++){let c=document.createElement("li");c.innerHTML=e[n].username,t.appendChild(c)}document.body.append(t)}(e))).catch((e=>console.warn(e)))})();
